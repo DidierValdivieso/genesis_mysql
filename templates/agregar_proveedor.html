@@ -1,0 +1,21 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Agregar proveedor
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Agregar Proveedor</h3>
+            <form action="{{url_for('guardar_proveedor')}}" method="post">
+                <label for="nombre">Nombre:</label>
+                <input required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                <label for="password">Contraseña</label>
+                <input required type="password" class="input" placeholder="Contraseña" name="password" id="password">
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('proveedor')}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Evaluaciones
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="centrado_titulo">Calificaciones recibidas:</h3>
+
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Factura</th>
+                          <th>Producto</th>
+                          <th>Cantidad</th>
+                          <th>Usuario</th>
+                          <th>Evaluacion</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        {% for venta in venta %}
+                          <td>{{venta[0]}}</td>
+                          <td>{{venta[1]}}</td>
+                          <td>{{venta[2]}}</td>
+                          <td>{{venta[3]}}</td>
+                          <td>{{venta[4]}}</td>
+                          
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+              
+              
+              <a href="{{url_for('producto_id', id=regreso[0])}}" class="button is-primary mt-2">Volver</a>  
+              
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

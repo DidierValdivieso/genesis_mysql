@@ -1,0 +1,29 @@
+{% extends "maestra.html" %}
+{% block titulo %} Inicio {% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Proveedores</h3>
+            <a href="{{url_for('proveedor')}}" class="button is-success">Mostrar proveedores</a>
+            <h3 class="is-size-3">Productos</h3>
+            <a href="{{url_for('producto')}}" class="button is-success">Mostrar productos</a>
+            <h3 class="is-size-3">Evaluaciones</h3>
+            <a href="{{url_for('proveedor')}}" class="button is-success">Mostrar evaluaciones</a>
+            <h3 class="is-size-3">Usuarios</h3>
+            <a href="{{url_for('usuario')}}" class="button is-success">Mostrar usuarios</a>
+            <table class="table">
+                <thead>
+                    
+                </thead>
+                <tbody>
+                    
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

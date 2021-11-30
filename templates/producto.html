@@ -1,0 +1,72 @@
+{% extends "maestra.html" %}
+{% block titulo %} Proveedores {% endblock %}
+{% block contenido %}
+
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            {% for proveedor in proveedor %}
+            <h1 class="is-size-3">Proveedor: <b>{{proveedor[1]}}</b></h1>
+            
+            <a href="{{url_for('editar_proveedor', id=proveedor[0])}}" class="button is-info">Editar proveedor</a>
+            
+            <br><br><br><br>
+            <h3 class="is-size-3">Listado productos</h3>
+            <a href="{{url_for('formulario_agregar_producto_id', id=proveedor[0])}}" class="button is-info">Crear producto</a>
+            {% endfor %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                        <th>Evaluaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{producto[1]}}</td>
+                        <td>{{producto[2]}}</td>
+                        <td>
+                            {# Pasar el id (lo que hay en producto[0] #}
+                            <a href="{{url_for('editar_producto', id=producto[0])}}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            {% for proveedor in proveedor %}
+                            <form action="{{url_for('eliminar_producto', id=proveedor[0])}}" method="POST">
+                                {% endfor %}
+                                <input type="hidden" name="id" value="{{producto[0]}}">
+                                <button class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{url_for('evaluacion_id', id=producto[0])}}" class="button is-info">Ver</a>
+                        </td>      
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table><br><br><br>
+            <h3 class="is-size-3">Promedio de calificacion realizada por usuarios</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Promedio evaluaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for promedio in promedio %}
+                    <tr>
+                        <td>{{promedio[1]}}</td>
+                        <td>{{promedio[0]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

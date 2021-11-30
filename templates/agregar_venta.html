@@ -1,0 +1,37 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Registrar venta
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Registrar Venta</h3>
+
+            
+                {% for usuario in usuario %}
+            <form action="{{url_for('guardar_venta_id', id=usuario[0])}}" method="post">
+                {% endfor %}
+                <label for="id_producto">Producto:</label><br>
+                <select name="id_producto">
+                    {% for producto in productos %}
+                    <option value="{{producto[0]}}">{{producto[1]}} ${{producto[2]}}</option>
+                    {% endfor %}
+                </select><br>               
+                <label for="cantidad">Cantidad:</label>
+                <input required type="number" class="input" placeholder="Cantidad" name="cantidad" id="cantidad">
+                <select hidden="True" name="id_usuario" >
+                    {% for usuario in usuario %}
+                    <option value="{{usuario[0]}}">{{usuario[1]}}</option>
+                    {% endfor %}
+                </select><br>
+            
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                {% for usuario in usuario %}
+                <a href="{{url_for('venta_id', id=usuario[0])}}" class="button is-primary mt-2">Volver</a>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

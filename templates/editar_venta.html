@@ -1,0 +1,31 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Editar venta
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="centrado_titulo">Calificar venta</h3>
+            <form action="{{url_for('calificar_venta_id', id_id=venta[3])}}" method="post">
+
+                <input type="hidden" name="id" value="{{venta[0]}}">
+
+                <p class="centrado">Su calificacion se almacenara en nuestra base de datos, para dar apoyo a los proveedores con intencionalidades de venta.</p>
+                <div class="sidebar-box">
+                    <br><select name="calificacion">
+                        <option value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5">★★★★★</option>
+                    </select><br>
+                </div>
+
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('venta_id', id=venta[3])}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

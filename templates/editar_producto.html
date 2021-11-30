@@ -1,0 +1,34 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Editar producto
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Editar producto</h3>
+            {% for proveedor in proveedor %}
+            <form action="{{url_for('actualizar_producto_id', id_id=proveedor[0])}}" method="post">
+            {% endfor %}
+                {# Enviar el id en un campo oculto #}
+                <input type="hidden" name="id" value="{{productos[0]}}">
+                <label for="nombre">Nombre:</label>
+                <input value="{{productos[1]}}" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                <label for="precio">Precio:</label>
+                <input value="{{productos[2]}}" required type="number" class="input" placeholder="Precio" name="precio" id="precio">
+                <select hidden="True" name="id_proveedor">
+                    {% for proveedor in proveedor %}
+                    <option value="{{proveedor[0]}}">{{proveedor[1]}}</option>
+                    {% endfor %}
+                </select><br>
+
+               
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                {% for proveedor in proveedor %}
+                <a href="{{url_for('producto_id', id=proveedor[0])}}" class="button is-primary mt-2">Volver</a>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

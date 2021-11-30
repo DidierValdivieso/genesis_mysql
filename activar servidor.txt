@@ -1,0 +1,6 @@
+env\Scripts\activate
+set FLASK_APP=main.py
+set "FLASK_ENV=development"
+
+Para este codigo solo necesito ejecutar en la carpeta env
+python main.py y abrir phpmyadmin

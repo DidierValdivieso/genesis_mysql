@@ -1,0 +1,25 @@
+{% extends "maestra.html" %}
+{% block titulo %} Ingreso {% endblock %}
+{% block contenido %}
+<section class="section">
+    
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3"><b>Inicio de sesion - Usuarios</b></h3><br><br>
+            <form action="{{url_for('login')}}" method="post">
+                <label for="correo">Correo:</label>
+                <input required type="text" class="input" placeholder="Correo" name="correo" id="correo"><br><br>
+                <label for="password">Contraseña:</label>
+                <input required type="password" class="input" placeholder="Contraseña" name="password" id="password"><br>
+                <a href="agregar_usuario">¿Deseas registrarte?</a> o 
+                <a href="login_proveedor">¿Eres proveedor?</a>
+
+
+                <br><br>
+                <button class="button is-danger">Ingresar</button>
+            </form>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

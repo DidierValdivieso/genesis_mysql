@@ -1,0 +1,45 @@
+{% extends "maestra.html" %}
+{% block titulo %} Ventas {% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            {% for usuario in usuario %}
+            <h3 class="is-size-3">Bievenido: <b>{{usuario[1]}}</b></h3>
+            <a href="{{url_for('editar_usuario', id=usuario[0])}}" class="button is-info">Editar Usuario</a>
+            <br><br><br><br>
+            <h3 class="is-size-3">Listado compras: </h3>
+            <a href="{{url_for('formulario_agregar_venta_id', id=usuario[0])}}" class="button is-info">Comprar</a>
+            {% endfor %}
+            <table class="centrado table">
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Valor total compra</th>
+                        <th>Evaluacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in ventas %}
+                    <tr>
+                        <td>{{venta[0]}}</td>
+                        <td>{{venta[1]}}</td>
+                        <td>{{venta[2]}}</td>
+                        <td>{{venta[3]}}</td>
+                        <td>
+                            <a href="{{url_for('editar_venta', id=venta[0])}}" class="button is-info">Calificar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+            
+        </div>
+    </div>
+</section>
+{% endblock %}
